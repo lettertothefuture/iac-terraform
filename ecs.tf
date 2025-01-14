@@ -31,7 +31,7 @@ resource "aws_ecs_service" "node_service" {
   desired_count   = 1
   launch_type     = "FARGATE"
   network_configuration {
-    subnets          = [var.subnet_id]
+    subnets          = [aws_subnet.ecs_subnet.id]
     assign_public_ip = true
   }
 }

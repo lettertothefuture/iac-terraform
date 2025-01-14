@@ -29,6 +29,14 @@ jobs:
     - name: Initialize Terraform
       run: terraform init
 
+    - name: Terraform Import Existing Resources
+      run: |
+        terraform import aws_ecr_repository.node_repo node-app-repo || true
+        terraform import aws_iam_role.ecs_execution_role ecs-execution-role || true
+        terraform import aws_iam_role.ecs_task_role ecs-task-role || true
+        terraform import aws_s3_bucket.react_site react-site-bucket || true
+        terraform import aws_s3_bucket.letter_bucket letter-json-bucket || true
+
     - name: Terraform Plan
       run: terraform plan
 

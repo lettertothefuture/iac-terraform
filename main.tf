@@ -13,24 +13,24 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "./vpc.tf"
+  source = "./vpc"
 }
 
 module "ecs" {
-  source    = "./ecr.tf"
+  source    = "./ecr"
   subnet_id = module.vpc.ecs_subnet_id
 }
 
 module "ecr" {
-  source = "./ecr.tf"
+  source = "./ecr"
 }
 
 module "s3" {
-  source                 = "./s3.tf"
+  source                 = "./s3"
   react_site_bucket_name = var.react_site_bucket_name
   letter_bucket_name     = var.letter_bucket_name
 }
 
 module "cloudfront" {
-  source = "./cloudfront.tf"
+  source = "./cloudfront"
 }

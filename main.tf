@@ -34,23 +34,3 @@ module "s3" {
 module "cloudfront" {
   source = "./cloudfront.tf"
 }
-
-output "ecs_service_name" {
-  value = module.ecs.ecs_service_name
-}
-
-output "react_site_bucket" {
-  value = module.s3.react_site_bucket
-}
-
-output "letter_bucket" {
-  value = module.s3.letter_bucket
-}
-
-output "ecr_repo_url" {
-  value = module.ecr.ecr_repo_url
-}
-
-output "cdn_url" {
-  value = module.cloudfront.cdn_url
-}

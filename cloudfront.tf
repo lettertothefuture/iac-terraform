@@ -39,7 +39,3 @@ resource "aws_cloudfront_distribution" "react_cdn" {
     cloudfront_default_certificate = true
   }
 }
-
-output "cdn_url" {
-  value = aws_cloudfront_distribution.react_cdn.domain_name
-}

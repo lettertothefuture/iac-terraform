@@ -29,9 +29,6 @@ jobs:
     - name: Initialize Terraform
       run: terraform init
 
-    - name: Clean
-      run: terraform destroy
-
     - name: Terraform Plan
       run: terraform plan
 

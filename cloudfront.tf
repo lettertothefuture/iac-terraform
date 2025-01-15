@@ -1,7 +1,9 @@
 resource "aws_cloudfront_distribution" "react_cdn" {
   origin {
-    domain_name = aws_s3_bucket.react_site.bucket_regional_domain_name
+    # domain_name = aws_s3_bucket.react_site.bucket_regional_domain_name
+    domain_name = aws_s3_bucket_website_configuration.react_site.website_domain
     origin_id   = "S3-ReactSite"
+    
   }
 
   enabled             = true

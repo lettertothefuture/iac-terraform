@@ -29,8 +29,22 @@ jobs:
     - name: Initialize Terraform
       run: terraform init
 
+    - name: Terraform Import Resources
+      run: | 
+        terraform import aws_s3_bucket.react_site react-site-bucket
+        terraform import aws_iam_role.ecs_execution_role arn:aws:iam::aws_account_id:role/ecs-execution-role
+        terraform import aws_iam_role.ecs_task_role arn:aws:iam::aws_account_id:role/ecs-task-role
+
     - name: Terraform Plan
       run: terraform plan
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
+
+    - name: Commit Changes
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add .
+        git commit -m "Update .terraform.lock.hcl"
+        git push origin HEAD:main

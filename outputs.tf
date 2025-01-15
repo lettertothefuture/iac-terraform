@@ -3,7 +3,8 @@ output "ecs_service_name" {
 }
 
 output "react_site_bucket" {
-  value = aws_s3_bucket_website_configuration.react_site.bucket
+  # value = aws_s3_bucket_website_configuration.react_site.bucket
+  value = aws_s3_bucket.react_site.bucket
 }
 
 output "letter_bucket" {

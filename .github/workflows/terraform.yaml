@@ -41,7 +41,9 @@ jobs:
         terraform import aws_subnet.ecs_subnet subnet-030b7a5d8387346b3
         terraform import aws_iam_role.ecs_execution_role ecs-execution-role
         terraform import aws_iam_role.ecs_task_role ecs-task-role
-
+        terraform import aws_cloudfront_distribution.react_cdn E12JY2M5G3JKF5
+        terraform import aws_ecs_cluster.node_cluster node-cluster/node-service
+        
     - name: Terraform Plan
       run: terraform plan
 

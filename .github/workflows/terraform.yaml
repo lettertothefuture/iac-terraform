@@ -35,8 +35,8 @@ jobs:
     - name: Terraform Import Resources
       run: | 
         terraform import aws_s3_bucket.react_site react-site-bucket
-        terraform import aws_iam_role.ecs_execution_role
-        terraform import aws_iam_role.ecs_task_role
+        # terraform import aws_iam_role.ecs_execution_role
+        # terraform import aws_iam_role.ecs_task_role
         terraform import aws_s3_bucket.letter_bucket
         terraform import aws_vpc.main_vpc
         terraform import aws_ecr_repository.node_repo

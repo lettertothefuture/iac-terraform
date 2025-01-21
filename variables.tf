@@ -19,6 +19,6 @@ variable "letter_bucket_name" {
 variable "region" {
   description = "Default regios"
   type        = string
-  default     = "us-east-1"
+  default     = "sa-east-1"
 
 }

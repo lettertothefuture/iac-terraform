@@ -9,7 +9,8 @@ resource "aws_ecs_task_definition" "node_task" {
   network_mode       = "awsvpc"
   container_definitions = jsonencode([{
     name      = "node-container"
-    image     = "${aws_ecr_repository.node_repo.repository_url}:latest"
+    # image     = "${aws_ecr_repository.node_repo.repository_url}:latest"
+    image     = "wilsonnascimentocosta98391/applicationaws:latest"
     essential = true
     memory    = 512
     cpu       = 256
@@ -34,4 +35,5 @@ resource "aws_ecs_service" "node_service" {
     subnets          = [aws_subnet.ecs_subnet.id]
     assign_public_ip = true
   }
+  
 }

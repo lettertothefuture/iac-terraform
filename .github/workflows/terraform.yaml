@@ -36,9 +36,9 @@ jobs:
       run: | 
         terraform import aws_s3_bucket.react_site react-site-bucket 
         terraform import aws_s3_bucket.letter_bucket letter-json-bucket
-        terraform import aws_vpc.main_vpc vpc-08becd6ad4f365fdc
+        terraform import aws_vpc.main_vpc vpc-0448d3d619c5c81cc
         terraform import aws_ecr_repository.node_repo node-app-repo
-        terraform import aws_subnet.ecs_subnet subnet-030b7a5d8387346b3
+        terraform import aws_subnet.ecs_subnet subnet-05eb98c13908a3c37
         terraform import aws_iam_role.ecs_execution_role ecs-execution-role
         terraform import aws_iam_role.ecs_task_role ecs-task-role
         terraform import aws_cloudfront_distribution.react_cdn E12JY2M5G3JKF5

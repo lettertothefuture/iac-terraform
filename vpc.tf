@@ -1,6 +1,6 @@
 # VPC and Subnet for ECS
 resource "aws_vpc" "main_vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = "10.0.0.0/21"
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {

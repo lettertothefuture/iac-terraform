@@ -2,13 +2,27 @@ resource "aws_ecs_cluster" "node_cluster" {
   name = "node-cluster"
 }
 
+resource "aws_ecs_service" "node_service" {
+  name            = "node-service"
+  cluster         = aws_ecs_cluster.node_cluster.id
+  task_definition = aws_ecs_task_definition.node_task.arn
+  desired_count   = 1
+  launch_type     = "FARGATE"
+  network_configuration {
+    subnets          = [aws_subnet.ecs_subnet.id]
+    assign_public_ip = true
+  }
+
+}
+
+
 resource "aws_ecs_task_definition" "node_task" {
   family             = "node-task"
   execution_role_arn = aws_iam_role.ecs_execution_role.arn
   task_role_arn      = aws_iam_role.ecs_task_role.arn
   network_mode       = "awsvpc"
   container_definitions = jsonencode([{
-    name      = "node-container"
+    name = "node-container"
     # image     = "${aws_ecr_repository.node_repo.repository_url}:latest"
     image     = "wilsonnascimentocosta98391/applicationaws:latest"
     essential = true
@@ -25,15 +39,3 @@ resource "aws_ecs_task_definition" "node_task" {
   memory                   = "512"
 }
 
-resource "aws_ecs_service" "node_service" {
-  name            = "node-service"
-  cluster         = aws_ecs_cluster.node_cluster.id
-  task_definition = aws_ecs_task_definition.node_task.arn
-  desired_count   = 1
-  launch_type     = "FARGATE"
-  network_configuration {
-    subnets          = [aws_subnet.ecs_subnet.id]
-    assign_public_ip = true
-  }
-  
-}

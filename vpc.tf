@@ -55,8 +55,6 @@ resource "aws_security_group" "example" {
 
   # Allow inbound traffic on port 32768 (ECS container agent)
   ingress {
-    from_port   = 32768
-    to_port     = 32768
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }

@@ -38,11 +38,13 @@ jobs:
         terraform import aws_s3_bucket.letter_bucket letter-json-bucket
         terraform import aws_vpc.main_vpc vpc-0448d3d619c5c81cc
         terraform import aws_internet_gateway.ig igw-0610b0c880ee8babf
+        terraform import aws_route_table.routetable rtb-01b97b80643e6cd63
         terraform import aws_subnet.ecs_subnet subnet-05eb98c13908a3c37
         terraform import aws_iam_role.ecs_execution_role ecs-execution-role
         terraform import aws_iam_role.ecs_task_role ecs-task-role
         terraform import aws_cloudfront_distribution.react_cdn E12JY2M5G3JKF5
         terraform import aws_ecs_service.node_service node-cluster/node-service
+        terraform import aws_security_group.example sg-0065e6bfae06cd44e
 
     - name: Terraform Plan
       run: terraform plan
